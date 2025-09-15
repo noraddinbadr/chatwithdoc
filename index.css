@@ -1,0 +1,109 @@
+
+[dir="rtl"] body {
+  font-family: 'Cairo', sans-serif;
+}
+
+body { 
+  margin: 0; 
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  /* Default dark theme body bg and text set in App.tsx via Tailwind */
+  transition: background-color 0.2s ease-out, color 0.2s ease-out;
+}
+
+/* Dark theme scrollbar */
+.chat-container::-webkit-scrollbar { width: 6px; }
+.chat-container::-webkit-scrollbar-thumb { background-color: #4A4A4A; border-radius: 3px; }
+.chat-container::-webkit-scrollbar-track { background-color: #282828; }
+
+
+/* Basic styling for rendered markdown - Dark Theme */
+.prose h1 { font-size: 1.5em; font-weight: bold; margin-top: 0.8em; margin-bottom: 0.4em; color: #E2E2E2; }
+.prose h2 { font-size: 1.25em; font-weight: bold; margin-top: 0.7em; margin-bottom: 0.35em; color: #E2E2E2; }
+.prose h3 { font-size: 1.1em; font-weight: bold; margin-top: 0.6em; margin-bottom: 0.3em; color: #E2E2E2; }
+.prose p { margin-bottom: 0.4em; line-height: 1.5; color: #E2E2E2; }
+.prose ul, .prose ol { margin-inline-start: 1.25em; margin-bottom: 0.4em; color: #E2E2E2; }
+.prose li { margin-bottom: 0.2em; color: #E2E2E2; }
+.prose strong { font-weight: bold; color: #E2E2E2; }
+.prose em { font-style: italic; color: #E2E2E2; }
+.prose code { /* background-color and color managed by highlight.js theme */ padding: 0.2em 0.4em; border-radius: 3px; font-family: 'Courier New', Courier, monospace; font-size: 0.9em; }
+.prose pre { /* background-color and color managed by highlight.js theme */ padding: 0.8em; border-radius: 4px; overflow-x: auto; margin-bottom: 0.5em; }
+.prose pre code { background-color: transparent; padding: 0; font-size: 0.9em; color: inherit; }
+.prose blockquote { border-inline-start: 3px solid #4A4A4A; margin-inline-start: 0; padding-inline-start: 1em; color: #A8ABB4; margin-bottom: 0.5em;}
+.prose a { color: #79B8FF; text-decoration: underline; }
+
+/* Custom styles for range slider */
+.range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #79B8FF;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 2px solid #1E1E1E;
+  margin-top: -7px; /* Center thumb on track */
+}
+
+.range-slider::-moz-range-thumb {
+  width: 14px; /* Slightly smaller for FF */
+  height: 14px;
+  background: #79B8FF;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 2px solid #1E1E1E;
+}
+
+/* Drag and Drop Overlay */
+.dropzone-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(24, 24, 24, 0.8);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  border: 2px dashed #79B8FF;
+  border-radius: 0.75rem; /* Match parent's rounded-xl */
+  pointer-events: none; /* Let events pass through to handlers */
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* Spinner for file loading */
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Blinking cursor for streaming response */
+.blinking-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1.2em; /* Aligns with text size */
+  background-color: #E2E2E2;
+  animation: blink 1s step-end infinite;
+  vertical-align: bottom;
+  margin-inline-start: 2px;
+}
+
+@keyframes blink {
+  from, to {
+    background-color: transparent;
+  }
+  50% {
+    background-color: #E2E2E2;
+  }
+}
+.chat-textarea {
+  transition: height 0.2s ease-in-out;
+}
